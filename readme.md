@@ -18,7 +18,9 @@ import ImageFileSelector from "react-image-select-component";
     onRemoveImage={this.onRemoveImage}
     onInvalidImage={this.onInvalidImage}  //required
     maxImageFileSize={this.maxImageFileSize}
-    errors={this.errors} //required
+    notImage={labels.errors.notImage}
+    imageTooLarge={labels.errors.imageTooLarge}
+    imageTooSmall={labels.errors.imageTooSmall}
     minSize={this.props.size}/>
 
 ```
@@ -41,12 +43,10 @@ For example
 	}
 ```
 
-```errors(object)``` - This is an object containing error messages
+```notImage, imageTooLarge, && imageTooSmall (string)``` - These are props containing error messages error messages
 ```
  For example
-  this.errors = {
-    	notImage: 'Please upload an image',
-    	imageTooLarge: 'This image is too large',
-    	imageTooSmall: 'This image is smaller than the required file image pixel size"
-    };
+	notImage: 'Please upload an image',
+	imageTooLarge: 'This image is too large',
+	imageTooSmall: 'This image is smaller than the required file image pixel size"
 ```

@@ -7,8 +7,7 @@ export default class ImageFileSelector extends React.Component {
   static propTypes = {
     onSelect: React.PropTypes.func.isRequired,
     onError: React.PropTypes.func,
-    onInvalidImage: React.PropTypes.func,
-    errors: React.PropTypes.object.isRequired
+    onInvalidImage: React.PropTypes.func
   }
 
   constructor(props) {
@@ -33,11 +32,11 @@ export default class ImageFileSelector extends React.Component {
 
     if (!file.type.match(/^image\//)) {
       this.onRemove();
-      return onInvalidImage(`${this.props.errors.notImage}`)
+      return onInvalidImage(`${this.props.notImage || "Not an Image"}`)
     }
     if (file.size > this.props.maxImageFileSize) { //made changes to use props maxfileSize
       this.onRemove();
-      return onInvalidImage(`${this.props.errors.imageTooLarge}`)
+      return onInvalidImage(`${this.props.imageTooLarge || "Image is too large"}`)
     }
     this.selectImage(file);
   }
@@ -78,7 +77,7 @@ export default class ImageFileSelector extends React.Component {
     image.onload = async() => {
       try {
         if (image.width < (minWidth || 0) * 0.995 || image.height < (minHeight || 0) * 0.995 && onInvalidImage) {
-          return onInvalidImage(`${this.props.errors.imageTooSmall} ${minWidth} x ${minHeight}`); //pass error
+          return onInvalidImage(`${this.props.imageTooSmall || "Image is too small"} ${minWidth} x ${minHeight}`); //pass error
         }
 		    this.props.onSelect(imageBase, imageFile);
       } catch (error) {
