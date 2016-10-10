@@ -48,7 +48,7 @@ For example
  For example
 	notImage: 'Please upload an image',
 	imageTooLarge: 'This image is too large',
-	imageTooSmall: 'This image is smaller than the required file image pixel size"
+	imageTooSmall: 'This image is smaller than the required file image pixel size'
 ```
 A usage example can be found here:
 [Usage](https://github.com/jihdeh/react-image-select-tool)
